@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mayank Goyal - Software Engineer Resume</title>
+<meta name="author" content="Mayank Goyal" />
+<meta name="keywords" content="Software Engineer, .NET, C#, ASP.NET Core, React, SQL Server, Full Stack Developer" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#16161f;--muted:#4a4a5c;--accent:#5b3fe0;--line:#dcdce6}
+body{font-family:'Inter',Calibri,Arial,sans-serif;color:var(--ink);font-size:8.9pt;line-height:1.3;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}
+.page{width:210mm;padding:0 13mm 0}
+.topbar{height:5px;background:linear-gradient(90deg,#7c5cff,#00b4e0,#e8458f);margin:0 -13mm}
+header{text-align:center;padding:4mm 0 2.2mm;border-bottom:1.5px solid var(--ink)}
+h1{font-size:22pt;font-weight:700;letter-spacing:.01em;line-height:1.1}
+.headline{font-size:10.5pt;font-weight:600;color:var(--accent);margin-top:2px}
+.contact{margin-top:4px;font-size:8.6pt;color:var(--muted)}
+.contact a{color:var(--muted);text-decoration:none}
+.contact span.sep{margin:0 6px;color:#aaa}
+h2{font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:1px;margin:2.8mm 0 1.3mm}
+p.summary{text-align:justify}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.row h3{font-size:10.2pt;font-weight:700}
+.row .when{font-size:9pt;font-weight:600;white-space:nowrap}
+.org{font-style:italic;color:var(--muted);margin-bottom:.6mm}
+h4{font-size:9.4pt;font-weight:700;margin:1.4mm 0 .3mm}
+h4 span{font-weight:400;color:var(--muted)}
+ul{padding-left:4.6mm;list-style:disc}
+li{margin-top:.35mm;padding-left:.6mm}
+li::marker{color:var(--accent)}
+.skills{display:grid;grid-template-columns:34mm 1fr;gap:.6mm 3mm}
+.skills b{font-weight:700}
+a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="topbar"></div>
+<header>
+  <h1>MAYANK GOYAL</h1>
+  <div class="headline">Software Engineer | Full-Stack Developer (.NET, C#, React, SQL Server)</div>
+  <div class="contact">
+    <a href="mailto:mayankgoyal310@gmail.com">mayankgoyal310@gmail.com</a><span class="sep">|</span>+91-8905977970<span class="sep">|</span><a href="https://www.linkedin.com/in/mayank-goyal-393426251/">linkedin.com/in/mayank-goyal-393426251</a><span class="sep">|</span><a href="https://github.com/mayankh25081">github.com/mayankh25081</a>
+  </div>
+</header>
+
+<h2>Professional Summary</h2>
+<p class="summary">Full-stack software engineer at NAV Fund Services with hands-on experience building enterprise <b>compliance and AML software</b> for fund administration. I'm a core developer on a Fund Screening platform built from scratch, working across <b>C#/.NET APIs, React/Redux UIs and SQL Server</b>: 200+ commits and 48 merged pull requests. I have a strong foundation in <b>data structures and algorithms</b>: CodeChef 4-star (1830) and 600+ problems solved.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <b>Languages</b><span>C#, JavaScript (ES6+), SQL / T-SQL, Java</span>
+  <b>Backend</b><span>.NET 10, ASP.NET Core Web API, REST APIs, Entity Framework Core, AutoMapper, Serilog, Swagger, Windows Services, Node.js, Express.js</span>
+  <b>Frontend</b><span>React.js, Redux, AG Grid, ExcelJS, HTML5, CSS3, Material UI, Bootstrap</span>
+  <b>Databases</b><span>Microsoft SQL Server (stored procedures, triggers, migrations), Redis, MongoDB</span>
+  <b>Testing &amp; Tools</b><span>xUnit, Git, Azure DevOps (Boards, Repos, Pull Requests), Visual Studio, VS Code</span>
+  <b>Concepts</b><span>Data Structures &amp; Algorithms, OOP, System Design, Caching Strategies, API Integration, Operating Systems, DBMS</span>
+</div>
+
+<h2>Professional Experience</h2>
+<div class="row"><h3>Software Engineer</h3><span class="when">Jul 2025 – Present</span></div>
+<div class="org" style="margin-top:-.6mm">NAV Fund Services</div>
+
+<h4>Fund Screening Platform <span>(AML / KYC compliance automation) · C#, ASP.NET Core, React, Redux, SQL Server</span></h4>
+<ul>
+  <li><b>Developed</b> a compliance platform from scratch that digitized the manual AML due-diligence workflow. Checklists are now created on the portal, World-Check, OFAC and LexisNexis checks run automatically, statuses update in real time, and the full screening can be exported. <b>Phase 1 passed UAT sign-off.</b></li>
+  <li><b>Delivered</b> 200+ commits and 48 merged pull requests touching 500+ files across C# services, SQL Server and React. Owned features end to end, from database schema to API to UI, and maintained xUnit tests for the screening processors and repositories.</li>
+  <li><b>Built</b> the contacts module (create/edit drawer, ownership attributes, category mapping, checklist rules) and its <b>integration with the MDM (Master Data Management) service</b>. Fixed sync-delay and delete-payload bugs and migrated MDM data types.</li>
+  <li><b>Implemented</b> audit logging with SQL Server triggers and log tables plus API request logging. Tuned the stored procedures behind screening results and missing-document detection.</li>
+  <li><b>Centralized</b> the validation and completion-bar rules so the Screening Data and Screening Result screens always show the same status. Extended the Excel export with AML plan, risk-rating and review sheets that keep comment formatting.</li>
+  <li><b>Built</b> an in-app feedback system that automatically records the page, user, environment and time, takes a screenshot, and uploads attachments to the document management system.</li>
+  <li><b>Currently building Phase 2:</b> contact search and copy across business clients, a Residence Zip attribute for LexisNexis checks, screening progress on Due Diligence records, fields that change with jurisdiction, and automated web search.</li>
+</ul>
+
+<h4>Platform &amp; Infrastructure</h4>
+<ul>
+  <li><b>Secured</b> service-to-service messaging by migrating the pub/sub services from HTTP to HTTPS.</li>
+  <li><b>Refactored</b> data types and variables across the entire application, keeping every layer consistent without regressions.</li>
+  <li><b>Ran</b> a Redis caching proof of concept and wrote the design document comparing Cache-Aside vs Read-Through and Write-Through vs Write-Behind (consistency, cache-stampede risk, fit with .NET).</li>
+</ul>
+
+<h2>Projects</h2>
+<div class="row"><h3>Path Visualizer <span style="font-weight:400;color:var(--muted)">| React.js, JavaScript, CSS</span></h3><span class="when"><a href="https://mayankh25081.github.io/pathVisualizer/">Live Demo</a></span></div>
+<ul>
+  <li>Built an interactive tool that animates <b>Dijkstra's algorithm, Breadth-First Search (BFS) and Depth-First Search (DFS)</b> on a 17 × 24 grid.</li>
+  <li>Users choose the start and target nodes and draw walls, then watch each algorithm explore the grid and trace its path.</li>
+</ul>
+
+<h2>Education</h2>
+<div class="row"><h3>Malaviya National Institute of Technology (MNIT), Jaipur</h3><span class="when">2021 – 2025</span></div>
+<div class="row"><span>B.Tech, Electronics and Communication Engineering · <b>CGPA: 8.32/10</b></span><span style="font-size:9pt">Jaipur, India</span></div>
+<ul><li>Data Structures &amp; Algorithms: <b>A+ grade</b>, ranked in the top 10 of the course. Also studied Operating Systems, OOP and DBMS.</li></ul>
+
+<h2>Achievements &amp; Leadership</h2>
+<ul>
+  <li><b>CodeChef 4-star (max rating 1830)</b>. Ranked <b>17th of 3,000+</b> participants in CodeChef Starters 105.</li>
+  <li><b>Codeforces Pupil (1302)</b>, with <b>600+ problems</b> solved across LeetCode and GeeksforGeeks.</li>
+  <li>Ranked <b>10th of 100+</b> students in a contest organized by MNIT and AlgoUniversity.</li>
+  <li>Submentor at the Codeshows coding club (2023–24) and member of the IEEE Student Branch (2022–23).</li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mayank Goyal · Software Engineer</title>
+<meta name="description" content="Mayank Goyal — Software Engineer at NAV Fund Services. .NET, React, algorithms." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#07070d; --bg2:#0d0d18; --card:rgba(255,255,255,.035); --border:rgba(255,255,255,.08);
+  --text:#e9e9f2; --muted:#9a9ab0; --a1:#7c5cff; --a2:#00d4ff; --a3:#ff4fa3; --ok:#3ef0a6;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2) 50%,var(--a3));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--a1);color:#fff}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* background */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.blob{position:fixed;width:520px;height:520px;border-radius:50%;filter:blur(110px);opacity:.28;z-index:0;pointer-events:none;animation:float 22s ease-in-out infinite}
+.blob.b1{background:var(--a1);top:-160px;left:-120px}
+.blob.b2{background:var(--a2);bottom:-200px;right:-140px;animation-delay:-8s}
+.blob.b3{background:var(--a3);top:40%;left:55%;width:360px;height:360px;opacity:.16;animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(80px,60px) scale(1.1)}66%{transform:translate(-60px,40px) scale(.95)}}
+.cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(124,92,255,.14),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
+
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:100;width:0}
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;border-radius:999px;background:rgba(15,15,28,.6);backdrop-filter:blur(14px);border:1px solid var(--border);animation:drop .9s cubic-bezier(.2,.8,.2,1) both .2s}
+nav a{padding:8px 16px;border-radius:999px;font-size:14px;color:var(--muted);transition:.25s}
+nav a:hover,nav a.active{color:#fff;background:rgba(124,92,255,.22)}
+@keyframes drop{from{opacity:0;transform:translate(-50%,-30px)}}
+
+main{position:relative;z-index:2}
+section{min-height:100vh;padding:120px 6vw 80px;max-width:1200px;margin:0 auto}
+.label{font-family:'JetBrains Mono',monospace;color:var(--a2);font-size:14px;letter-spacing:.1em;margin-bottom:12px}
+h2{font-size:clamp(34px,5vw,56px);line-height:1.1;margin-bottom:48px}
+.grad{background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+/* hero */
+#home{display:flex;flex-direction:column;justify-content:center}
+.hello{font-family:'JetBrains Mono',monospace;color:var(--a2);margin-bottom:16px;opacity:0;animation:up .8s .4s forwards}
+.name{font-size:clamp(52px,10vw,128px);font-weight:700;line-height:.95;letter-spacing:-.03em}
+.name span{display:inline-block;opacity:0;transform:translateY(80px) rotate(8deg);animation:letter .9s cubic-bezier(.2,.9,.25,1.2) forwards}
+@keyframes letter{to{opacity:1;transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.role{font-size:clamp(20px,3vw,32px);color:var(--muted);margin-top:22px;min-height:1.5em;opacity:0;animation:up .8s 1.4s forwards}
+.role .typed{color:#fff}
+.caret{display:inline-block;width:3px;height:1em;background:var(--a2);margin-left:4px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-sub{max-width:620px;color:var(--muted);margin-top:22px;font-size:18px;opacity:0;animation:up .8s 1.7s forwards}
+.cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;opacity:0;animation:up .8s 2s forwards}
+.btn{position:relative;padding:14px 28px;border-radius:14px;font-weight:600;overflow:hidden;transition:transform .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:10px}
+.btn.primary{background:var(--grad);background-size:200%;color:#fff;box-shadow:0 10px 40px -10px rgba(124,92,255,.7);animation:shine 5s linear infinite}
+.btn.ghost{border:1px solid var(--border);background:var(--card)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 50px -10px rgba(0,212,255,.55)}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:26px;height:42px;border:2px solid var(--muted);border-radius:14px;opacity:0;animation:up .8s 2.4s forwards}
+.scroll-hint::after{content:'';position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--a2);animation:wheel 1.8s infinite}
+@keyframes wheel{to{transform:translateY(14px);opacity:0}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.about-text p{color:var(--muted);font-size:18px;margin-bottom:18px}
+.about-text b{color:#fff;font-weight:600}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{padding:24px;border-radius:20px;background:var(--card);border:1px solid var(--border);transition:.3s}
+.stat:hover{border-color:rgba(124,92,255,.5);transform:translateY(-4px)}
+.stat .num{font-size:40px;font-weight:700}
+.stat .lbl{color:var(--muted);font-size:14px}
+
+/* cards */
+.card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;backdrop-filter:blur(8px);transition:border-color .3s;transform-style:preserve-3d}
+.card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(124,92,255,.8),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+
+/* timeline */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:11px;top:0;bottom:0;width:2px;background:linear-gradient(var(--a1),var(--a2),var(--a3));transform-origin:top;transform:scaleY(var(--line,0));transition:transform .2s linear}
+.t-item{position:relative;margin-bottom:28px}
+.t-item::before{content:'';position:absolute;left:-36px;top:36px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--a2);box-shadow:0 0 0 6px rgba(0,212,255,.12),0 0 20px var(--a2)}
+.t-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.t-head h3{font-size:24px}
+.pill{font-family:'JetBrains Mono',monospace;font-size:12px;padding:5px 12px;border-radius:999px;background:rgba(0,212,255,.1);color:var(--a2);border:1px solid rgba(0,212,255,.25)}
+.pill.live{background:rgba(62,240,166,.1);color:var(--ok);border-color:rgba(62,240,166,.3)}
+.pill.live::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:7px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,240,166,.7)}100%{box-shadow:0 0 0 10px rgba(62,240,166,0)}}
+.company{color:var(--muted);margin-bottom:22px}
+.work-list{display:grid;gap:14px}
+.work{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:18px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid transparent;transition:.3s}
+.work:hover{border-color:var(--border);background:rgba(255,255,255,.04);transform:translateX(6px)}
+.work .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(0,212,255,.15))}
+.work h4{font-size:17px;margin-bottom:4px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.work p{color:var(--muted);font-size:15px}
+.fs-stats{display:flex;gap:28px;margin:18px 0 6px;flex-wrap:wrap}
+.fs-stats div{display:flex;flex-direction:column}
+.fs-stats b{font-size:30px;line-height:1.1}
+.fs-stats span{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.phases{display:grid;gap:14px;margin-top:16px}
+.phase{padding:16px 18px;border-radius:14px;background:rgba(0,0,0,.25);border:1px solid var(--border);transition:.3s}
+.phase:hover{border-color:rgba(0,212,255,.35)}
+.ph-h{font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ph-dot{width:10px;height:10px;border-radius:50%;background:var(--a2);box-shadow:0 0 10px var(--a2)}
+.ph-dot.live{background:var(--ok);box-shadow:0 0 0 0 rgba(62,240,166,.7);animation:pulse 1.6s infinite}
+.ph-tag{font:500 11px 'JetBrains Mono',monospace;padding:3px 9px;border-radius:999px;background:rgba(0,212,255,.1);color:var(--a2)}
+.ph-tag.live{background:rgba(62,240,166,.12);color:var(--ok)}
+.phase ul{list-style:none;display:grid;gap:7px}
+.phase li{color:var(--muted);font-size:14.5px;padding-left:20px;position:relative}
+.phase li::before{content:'▹';position:absolute;left:2px;color:var(--a2)}
+.phase li b{color:#e9e9f2;font-weight:600}
+nav a.nav-cta{background:var(--grad);background-size:200%;color:#fff;animation:shine 5s linear infinite;display:inline-flex;align-items:center;gap:6px}
+nav a.nav-cta:hover{box-shadow:0 6px 24px -6px var(--a2)}
+.work.major{border-color:rgba(62,240,166,.25);background:linear-gradient(135deg,rgba(62,240,166,.06),rgba(0,212,255,.04))}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:12px;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.05);color:#c9c9de}
+
+/* project */
+.project{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+.viz-wrap{border-radius:20px;overflow:hidden;border:1px solid var(--border);background:#0b0b16;box-shadow:0 30px 80px -30px rgba(124,92,255,.55)}
+.viz-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.03)}
+.dot{width:11px;height:11px;border-radius:50%}
+.viz-bar .algo{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--a2)}
+#grid{display:grid;grid-template-columns:repeat(24,1fr);gap:2px;padding:14px;cursor:crosshair}
+.cell{aspect-ratio:1;border-radius:3px;background:rgba(255,255,255,.04);transition:background .25s}
+.cell.wall{background:#3a3a55;animation:pop .3s}
+.cell.visited{background:rgba(124,92,255,.55);animation:visit .5s ease-out}
+.cell.path{background:#ffd84a;box-shadow:0 0 10px #ffd84a;animation:pop .35s}
+.cell.start{background:var(--ok);box-shadow:0 0 12px var(--ok)}
+.cell.end{background:var(--a3);box-shadow:0 0 12px var(--a3)}
+@keyframes visit{0%{transform:scale(.3);background:var(--a2);border-radius:50%}60%{background:rgba(0,212,255,.8)}100%{transform:scale(1)}}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+.viz-ctrl{display:flex;gap:8px;padding:0 14px 14px;flex-wrap:wrap}
+.viz-ctrl button{font:500 13px 'JetBrains Mono',monospace;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer;transition:.2s}
+.viz-ctrl button:hover,.viz-ctrl button.on{background:rgba(124,92,255,.3);border-color:var(--a1)}
+.viz-hint{padding:0 14px 14px;font-size:12px;color:var(--muted)}
+.project h3{font-size:40px;line-height:1.1;margin-bottom:14px}
+.project ul{list-style:none;margin:20px 0;display:grid;gap:12px}
+.project li{color:var(--muted);padding-left:28px;position:relative}
+.project li::before{content:'▹';position:absolute;left:4px;color:var(--a2)}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.skill-card h3{font-size:18px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px;transition:.25s;cursor:default}
+.chip:hover{background:var(--grad);border-color:transparent;transform:translateY(-3px) scale(1.05);color:#fff}
+.marquee{overflow:hidden;margin:60px -6vw 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marq 30s linear infinite;font-size:clamp(30px,5vw,58px);font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22)}
+.marquee-track span:nth-child(odd){-webkit-text-stroke:0;background:var(--grad);-webkit-background-clip:text;background-clip:text}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* achievements */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.ach{text-align:center;padding:36px 24px}
+.ach .big{font-size:52px;font-weight:700;line-height:1}
+.ach .t{margin-top:10px;font-weight:600}
+.ach .s{color:var(--muted);font-size:14px;margin-top:4px}
+.edu{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu h3{font-size:22px;margin-bottom:6px}
+.edu p{color:var(--muted)}
+
+/* contact */
+#contact{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+#contact h2{font-size:clamp(44px,8vw,96px);margin-bottom:22px}
+#contact p{color:var(--muted);max-width:520px;font-size:18px;margin-bottom:38px}
+.socials{display:flex;gap:14px;margin-top:30px;justify-content:center;flex-wrap:wrap}
+.social{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;border:1px solid var(--border);background:var(--card);transition:.3s}
+.social:hover{transform:translateY(-5px) rotate(-6deg);border-color:var(--a1);box-shadow:0 10px 30px -8px var(--a1)}
+.social svg{width:22px;height:22px;fill:currentColor}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:30px;position:relative;z-index:2}
+
+@media (max-width:860px){
+  .about-grid,.project,.edu{grid-template-columns:1fr}
+  nav a{padding:7px 10px;font-size:12px}
+  section{padding:100px 16px 60px}
+  .cursor-glow{display:none}
+  .card{padding:22px}
+}
+@media (max-width:560px){nav a[href="#home"],nav a[href="#skills"]{display:none}nav{max-width:calc(100vw - 24px)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<canvas id="stars"></canvas>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<nav id="nav">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#experience">Work</a>
+  <a href="#project">Project</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+  <a href="Mayank_Goyal_Resume.pdf" download class="nav-cta">⬇ Resume</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="home">
+  <div class="hello">&lt;hello world /&gt; — I'm</div>
+  <h1 class="name" id="name">Mayank Goyal</h1>
+  <div class="role">I build <span class="typed" id="typed"></span><span class="caret"></span></div>
+  <p class="hero-sub">Software Engineer at <b style="color:#fff">NAV Fund Services</b>, currently building a fund screening platform from the ground up. ECE grad from MNIT Jaipur, competitive programmer, and someone who enjoys turning algorithms into things you can see.</p>
+  <div class="cta">
+    <a href="#project" class="btn primary">See my work →</a>
+    <a href="Mayank_Goyal_Resume.pdf" download class="btn ghost">⬇ Get resume (PDF)</a>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="label reveal">01 / about</div>
+  <h2 class="reveal">Engineer by trade,<br><span class="grad">problem-solver by habit.</span></h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I graduated in <b>Electronics &amp; Communication Engineering</b> from <b>Malaviya National Institute of Technology, Jaipur</b> (2021–2025), where I fell in love with data structures and algorithms. I scored an A+ in DSA and ranked among the top 10 in the course.</p>
+      <p>Since <b>July 2025</b> I've been a software engineer at <b>NAV Fund Services</b>. I've worked on secure service communication, application-wide refactors, and caching research, and I'm now building a <b>Fund Screening application from scratch</b>.</p>
+      <p>Outside work, I'm usually solving problems on CodeChef, Codeforces and LeetCode.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat card"><div class="num grad" data-count="1830">0</div><div class="lbl">CodeChef rating · 4★</div></div>
+      <div class="stat card"><div class="num grad" data-count="600" data-suffix="+">0</div><div class="lbl">Problems solved</div></div>
+      <div class="stat card"><div class="num grad" data-count="8.32" data-dec="2">0</div><div class="lbl">CGPA · MNIT Jaipur</div></div>
+      <div class="stat card"><div class="num grad" data-count="17" data-prefix="#">0</div><div class="lbl">of 3000+ in CodeChef Starters 105</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="label reveal">02 / experience</div>
+  <h2 class="reveal">Where I've been <span class="grad">shipping.</span></h2>
+  <div class="timeline" id="timeline">
+    <div class="t-item reveal">
+      <div class="card">
+        <div class="t-head"><h3>Software Engineer</h3><span class="pill live">Jul 2025 — Present</span></div>
+        <div class="company">NAV Fund Services</div>
+        <div class="work-list">
+          <div class="work major">
+            <div class="ic">🚀</div>
+            <div>
+              <h4>Fund Screening Platform <span class="pill live">Phase 2 in progress</span></h4>
+              <p>Core developer on a compliance platform built from scratch to digitize and automate the AML due-diligence workflow. AML checklists are created on the portal, screening checks run automatically, statuses update in real time, and the full screening can be reviewed online or exported.</p>
+              <div class="fs-stats">
+                <div><b class="grad" data-count="200" data-suffix="+">0</b><span>commits</span></div>
+                <div><b class="grad" data-count="48">0</b><span>merged PRs</span></div>
+                <div><b class="grad" data-count="3">0</b><span>delivery phases</span></div>
+              </div>
+              <div class="phases">
+                <div class="phase">
+                  <div class="ph-h"><span class="ph-dot done"></span>Phase 1: Digitization &amp; automation <span class="ph-tag">UAT signed off</span></div>
+                  <ul>
+                    <li>Built the <b>contacts module</b>: contact screens and drawer, category and sub-category mapping, ownership attributes and checklist mapping rules</li>
+                    <li>Integrated with <b>MDM</b>: contact and fund sync, fixed sync delays and delete payloads, migrated MDM data types, and added API logging</li>
+                    <li>Added <b>audit trails</b> with SQL Server triggers and log tables, and tuned the stored procedures that drive screening results and missing-document detection</li>
+                    <li>Wired automated <b>World-Check, OFAC and LexisNexis</b> results into the screening tab and Excel output</li>
+                  </ul>
+                </div>
+                <div class="phase">
+                  <div class="ph-h"><span class="ph-dot done"></span>Phase 1 enhancements &amp; user feedback <span class="ph-tag">Shipped</span></div>
+                  <ul>
+                    <li>Centralized the <b>validation and completion-bar logic</b> so the Screening Data and Screening Result screens always agree</li>
+                    <li>Extended the <b>Excel export</b> with an AML plan sheet, a risk-rating sheet and an ordered review sheet, and kept comment colours from the portal</li>
+                    <li>Built an <b>in-app feedback system</b> that records the page, user, environment and time, takes a screenshot, and uploads attachments to the DMS</li>
+                  </ul>
+                </div>
+                <div class="phase">
+                  <div class="ph-h"><span class="ph-dot live"></span>Phase 2: Automated web search &amp; more <span class="ph-tag live">Now</span></div>
+                  <ul>
+                    <li><b>Search and copy contacts</b> across business clients to cut manual data entry</li>
+                    <li>Added a <b>Residence Zip</b> attribute, synced to MDM, for LexisNexis checks</li>
+                    <li>Screening status and a <b>progress bar on Due Diligence records</b>, removing a fund from an AML checklist, and fields that change with jurisdiction</li>
+                    <li>Automated <b>web search</b> as part of the screening flow</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tags"><span class="tag">.NET 10</span><span class="tag">ASP.NET Core</span><span class="tag">React</span><span class="tag">Redux</span><span class="tag">AG Grid</span><span class="tag">ExcelJS</span><span class="tag">SQL Server</span><span class="tag">Stored Procedures</span><span class="tag">Triggers</span><span class="tag">MDM APIs</span><span class="tag">Windows Services</span></div>
+            </div>
+          </div>
+          <div class="work">
+            <div class="ic">⚡</div>
+            <div>
+              <h4>Redis Caching POC &amp; Design Doc</h4>
+              <p>Ran a proof of concept for Redis caching and wrote a design document comparing read strategies (Cache-Aside vs Read-Through) and write strategies (Write-Through vs Write-Behind), covering consistency, stampede risk and .NET fit.</p>
+              <div class="tags"><span class="tag">Redis</span><span class="tag">.NET</span><span class="tag">System Design</span></div>
+            </div>
+          </div>
+          <div class="work">
+            <div class="ic">🔒</div>
+            <div>
+              <h4>Pub/Sub Services: HTTP → HTTPS</h4>
+              <p>Migrated the pub/sub messaging services from HTTP to HTTPS to secure inter-service communication.</p>
+              <div class="tags"><span class="tag">Pub/Sub</span><span class="tag">TLS</span><span class="tag">Security</span></div>
+            </div>
+          </div>
+          <div class="work">
+            <div class="ic">🧬</div>
+            <div>
+              <h4>Application-wide Data Type Refactor</h4>
+              <p>Changed data types and variables consistently across the whole application, keeping every layer aligned without regressions.</p>
+              <div class="tags"><span class="tag">Refactoring</span><span class="tag">C#</span><span class="tag">SQL</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-item reveal">
+      <div class="card">
+        <div class="t-head"><h3>B.Tech, Electronics &amp; Communication</h3><span class="pill">2021 — 2025</span></div>
+        <div class="company">Malaviya National Institute of Technology, Jaipur · CGPA 8.32</div>
+        <p style="color:var(--muted)">Coursework: Data Structures &amp; Algorithms (A+), Operating Systems, OOP, DBMS. Submentor at the Codeshows coding club (2023–24) and member of the IEEE Student Branch (2022–23).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <div class="label reveal">03 / featured project</div>
+  <h2 class="reveal">Algorithms, <span class="grad">made visible.</span></h2>
+  <div class="project">
+    <div class="viz-wrap reveal">
+      <div class="viz-bar">
+        <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+        <span class="algo" id="algoName">BFS · live demo</span>
+      </div>
+      <div id="grid"></div>
+      <div class="viz-ctrl">
+        <button data-algo="bfs" class="on">BFS</button>
+        <button data-algo="dfs">DFS</button>
+        <button data-algo="dijkstra">Dijkstra</button>
+        <button id="runBtn">▶ Run</button>
+        <button id="clearBtn">Clear walls</button>
+      </div>
+      <div class="viz-hint">Click or drag on the grid to draw walls, then press Run.</div>
+    </div>
+    <div class="reveal">
+      <div class="pill" style="display:inline-block;margin-bottom:16px">React · CSS · JavaScript</div>
+      <h3>Path Visualizer</h3>
+      <p style="color:var(--muted);font-size:18px">An interactive data structures and algorithms project. Pick a start and target node on a 17 × 24 grid and watch the algorithm explore its way to the shortest path.</p>
+      <ul>
+        <li>Three algorithms: <b style="color:#fff">Dijkstra's</b>, <b style="color:#fff">Breadth-First Search</b> and <b style="color:#fff">Depth-First Search</b></li>
+        <li>Choose any start and target node</li>
+        <li>Draw walls to block paths and see how each algorithm adapts</li>
+        <li>The mini demo on the left runs the same idea, so try it out</li>
+      </ul>
+      <div class="cta" style="opacity:1;animation:none;margin-top:28px">
+        <a class="btn primary" href="https://mayankh25081.github.io/pathVisualizer/" target="_blank" rel="noopener">Live demo ↗</a>
+        <a class="btn ghost" href="https://github.com/mayankh25081/pathVisualizer" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="label reveal">04 / toolkit</div>
+  <h2 class="reveal">Things I <span class="grad">work with.</span></h2>
+  <div class="skills-grid">
+    <div class="card skill-card reveal"><h3>💻 Languages</h3><div class="chips"><span class="chip">C#</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div></div>
+    <div class="card skill-card reveal"><h3>🧱 Backend</h3><div class="chips"><span class="chip">.NET / ASP.NET</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">REST APIs</span><span class="chip">Pub/Sub</span></div></div>
+    <div class="card skill-card reveal"><h3>🎨 Frontend</h3><div class="chips"><span class="chip">React.js</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Material UI</span><span class="chip">Bootstrap</span></div></div>
+    <div class="card skill-card reveal"><h3>🗄️ Data &amp; Cache</h3><div class="chips"><span class="chip">SQL Server</span><span class="chip">MongoDB</span><span class="chip">Redis</span></div></div>
+    <div class="card skill-card reveal"><h3>🛠️ Tools</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Visual Studio</span><span class="chip">VS Code</span></div></div>
+    <div class="card skill-card reveal"><h3>📚 Core CS</h3><div class="chips"><span class="chip">DSA</span><span class="chip">OOP</span><span class="chip">Operating Systems</span><span class="chip">DBMS</span><span class="chip">Competitive Programming</span></div></div>
+  </div>
+  <div class="marquee"><div class="marquee-track" id="marquee"></div></div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="min-height:auto">
+  <div class="label reveal">05 / achievements</div>
+  <h2 class="reveal">Competitive <span class="grad">programming.</span></h2>
+  <div class="ach-grid">
+    <div class="card ach reveal"><div class="big grad" data-count="1830">0</div><div class="t">CodeChef</div><div class="s">4-star rating</div></div>
+    <div class="card ach reveal"><div class="big grad" data-count="1302">0</div><div class="t">Codeforces</div><div class="s">Pupil</div></div>
+    <div class="card ach reveal"><div class="big grad" data-count="17" data-prefix="#">0</div><div class="t">CodeChef Starters 105</div><div class="s">out of 3000+ participants</div></div>
+    <div class="card ach reveal"><div class="big grad" data-count="10" data-prefix="#">0</div><div class="t">MNIT × AlgoUniversity</div><div class="s">out of 100+ students</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="label reveal">06 / contact</div>
+  <h2 class="reveal">Let's <span class="grad">build</span> something.</h2>
+  <p class="reveal">Whether it's a role, a project, or a good algorithm puzzle, my inbox is open.</p>
+  <a class="btn primary reveal" href="mailto:mayankgoyal310@gmail.com">✉ mayankgoyal310@gmail.com</a>
+  <div class="socials reveal">
+    <a class="social" href="https://github.com/mayankh25081" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+    <a class="social" href="https://www.linkedin.com/in/mayank-goyal-393426251/" target="_blank" rel="noopener" aria-label="LinkedIn" id="linkedin"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg></a>
+    <a class="social" href="mailto:mayankgoyal310@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4Zm10 8.5L4 7v11h16V7l-8 5.5ZM5.3 6 12 10.5 18.7 6H5.3Z"/></svg></a>
+  </div>
+</section>
+</main>
+<footer>Designed &amp; built by Mayank Goyal · <span class="mono" id="year"></span></footer>
+
+<script>
+// ---------- name letters ----------
+const nameEl=document.getElementById('name');
+nameEl.innerHTML=[...nameEl.textContent].map((c,i)=>c===' '?'<br>':`<span class="${i>5?'grad':''}" style="animation-delay:${.5+i*.06}s">${c}</span>`).join('');
+
+// ---------- typing ----------
+const words=['fund screening platforms.','secure .NET services.','scalable caching layers.','algorithm visualizers.','clean, fast web apps.'];
+const typed=document.getElementById('typed');let wi=0,ci=0,del=false;
+(function type(){const w=words[wi];typed.textContent=w.slice(0,ci);
+  if(!del&&ci<w.length){ci++;setTimeout(type,70)}
+  else if(!del){del=true;setTimeout(type,1600)}
+  else if(ci>0){ci--;setTimeout(type,35)}
+  else{del=false;wi=(wi+1)%words.length;setTimeout(type,300)}})();
+
+// ---------- star field ----------
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let W,H,stars=[];
+const mouse={x:-999,y:-999};
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;
+  stars=Array.from({length:Math.min(120,Math.floor(W*H/12000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.3}))}
+resize();addEventListener('resize',resize);
+(function draw(){cx.clearRect(0,0,W,H);
+  for(const s of stars){s.x+=s.vx;s.y+=s.vy;if(s.x<0||s.x>W)s.vx*=-1;if(s.y<0||s.y>H)s.vy*=-1;
+    cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fillStyle='rgba(200,200,255,.7)';cx.fill()}
+  for(let i=0;i<stars.length;i++){const a=stars[i];
+    const dm=Math.hypot(a.x-mouse.x,a.y-mouse.y);
+    if(dm<160){cx.strokeStyle=`rgba(0,212,255,${(1-dm/160)*.5})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mouse.x,mouse.y);cx.stroke()}
+    for(let j=i+1;j<stars.length;j++){const b=stars[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<110){cx.strokeStyle=`rgba(124,92,255,${(1-d/110)*.25})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}}
+  requestAnimationFrame(draw)})();
+
+// ---------- cursor glow ----------
+const glow=document.getElementById('glow');
+addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+
+// ---------- card spotlight + tilt ----------
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+    c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+    if(c.closest('.timeline'))return;
+    c.style.transform=`perspective(900px) rotateX(${(y/r.height-.5)*-6}deg) rotateY(${(x/r.width-.5)*6}deg)`});
+  c.addEventListener('mouseleave',()=>c.style.transform='')});
+
+// ---------- counters ----------
+function count(el){const t=+el.dataset.count,dec=+(el.dataset.dec||0),p=el.dataset.prefix||'',s=el.dataset.suffix||'';let st=null;
+  (function step(ts){st??=ts;const k=Math.min((ts-st)/1800,1),e=1-Math.pow(1-k,4);
+    el.textContent=p+(t*e).toFixed(dec)+s;if(k<1)requestAnimationFrame(step)})(performance.now())}
+
+// ---------- reveal ----------
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+  const el=e.target;el.classList.add('in');el.querySelectorAll('[data-count]').forEach(count);
+  if(el.matches('[data-count]'))count(el);io.unobserve(el)}),{threshold:0,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.08+'s';io.observe(el)});
+
+// ---------- scroll progress, nav, timeline ----------
+const secs=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('nav a')],tl=document.getElementById('timeline');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  document.getElementById('progress').style.width=(scrollY/(h.scrollHeight-innerHeight))*100+'%';
+  let cur=secs[0].id;secs.forEach(s=>{if(scrollY>=s.offsetTop-innerHeight/2)cur=s.id});
+  if(cur==='achievements')cur='skills';
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  const r=tl.getBoundingClientRect();tl.style.setProperty('--line',Math.max(0,Math.min(1,(innerHeight*.7-r.top)/r.height)))},{passive:true});
+
+// ---------- marquee ----------
+const mq=['Fund Screening','.NET','Redis','React','Algorithms','Dijkstra','BFS','DFS','Pub/Sub','HTTPS'];
+document.getElementById('marquee').innerHTML=[...mq,...mq].map(w=>`<span>${w}</span>`).join('<span>✦</span>');
+
+// ---------- mini path visualizer ----------
+const R=17,C=24,S=[8,3],E=[8,20],gridEl=document.getElementById('grid');let cells=[],walls=new Set(),algo='bfs',running=false,timers=[];
+for(let r=0;r<R;r++)for(let c=0;c<C;c++){const d=document.createElement('div');d.className='cell';d.dataset.k=r+','+c;gridEl.appendChild(d);cells.push(d)}
+const cell=(r,c)=>cells[r*C+c];cell(...S).classList.add('start');cell(...E).classList.add('end');
+// default walls
+[[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[2,7],[3,7],[4,7],[5,7],[6,7],[11,15],[12,15],[13,15],[14,15],[10,15],[9,15],[8,15]].forEach(([r,c])=>{walls.add(r+','+c);cell(r,c).classList.add('wall')});
+let drawing=false,mode=true;
+function toggle(t){const k=t.dataset.k;if(!k||running||k===S.join()||k===E.join())return;
+  mode?walls.add(k):walls.delete(k);t.classList.toggle('wall',mode)}
+gridEl.addEventListener('pointerdown',e=>{if(!e.target.dataset.k)return;resetViz();drawing=true;mode=!walls.has(e.target.dataset.k);toggle(e.target)});
+gridEl.addEventListener('pointerover',e=>drawing&&toggle(e.target));
+addEventListener('pointerup',()=>drawing=false);
+document.querySelectorAll('[data-algo]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-algo]').forEach(x=>x.classList.remove('on'));b.classList.add('on');algo=b.dataset.algo;
+  document.getElementById('algoName').textContent={bfs:'BFS',dfs:'DFS',dijkstra:"Dijkstra"}[algo]+' · live demo';run()});
+document.getElementById('runBtn').onclick=run;
+document.getElementById('clearBtn').onclick=()=>{resetViz();walls.forEach(k=>cell(...k.split(',').map(Number)).classList.remove('wall'));walls.clear()};
+function resetViz(){timers.forEach(clearTimeout);timers=[];running=false;cells.forEach(c=>c.classList.remove('visited','path'))}
+function nbrs([r,c]){return[[r-1,c],[r,c+1],[r+1,c],[r,c-1]].filter(([a,b])=>a>=0&&b>=0&&a<R&&b<C&&!walls.has(a+','+b))}
+function solve(){const key=p=>p.join(),prev={},order=[],seen=new Set([key(S)]);
+  if(algo==='dfs'){const st=[S];while(st.length){const p=st.pop();order.push(p);if(key(p)===key(E))break;
+      for(const n of nbrs(p).reverse())if(!seen.has(key(n))){seen.add(key(n));prev[key(n)]=p;st.push(n)}}}
+  else if(algo==='bfs'){const q=[S];while(q.length){const p=q.shift();order.push(p);if(key(p)===key(E))break;
+      for(const n of nbrs(p))if(!seen.has(key(n))){seen.add(key(n));prev[key(n)]=p;q.push(n)}}}
+  else{const dist={[key(S)]:0},done=new Set(),pq=[[0,S]];
+    while(pq.length){pq.sort((a,b)=>a[0]-b[0]);const[d,p]=pq.shift();if(done.has(key(p)))continue;done.add(key(p));order.push(p);if(key(p)===key(E))break;
+      for(const n of nbrs(p)){const nd=d+1;if(nd<(dist[key(n)]??1e9)){dist[key(n)]=nd;prev[key(n)]=p;pq.push([nd,n])}}}}
+  const path=[];let cur=E;if(prev[key(E)]){while(cur){path.unshift(cur);cur=prev[key(cur)]}}
+  return{order,path}}
+function run(){resetViz();running=true;const{order,path}=solve(),sp=algo==='dfs'?14:9;
+  order.forEach((p,i)=>timers.push(setTimeout(()=>{const k=p.join();if(k!==S.join()&&k!==E.join())cell(...p).classList.add('visited')},i*sp)));
+  path.forEach((p,i)=>timers.push(setTimeout(()=>{const k=p.join();if(k!==S.join()&&k!==E.join())cell(...p).classList.add('path');if(i===path.length-1)running=false},order.length*sp+i*35)));
+  if(!path.length)timers.push(setTimeout(()=>running=false,order.length*sp))}
+// autorun when visible
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){setTimeout(run,500);o.disconnect()}}),{threshold:.4}).observe(gridEl);
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
